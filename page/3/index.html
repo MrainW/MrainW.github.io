@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/07/06/LeetCode%20102.%20Binary%20Tree%20Level%20Order%20Traversal/">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/09/01/LeetCode%20234.%20Palindrome%20Linked%20List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -205,7 +205,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/06/LeetCode%20102.%20Binary%20Tree%20Level%20Order%20Traversal/" class="post-title-link" itemprop="url">LeetCode 102. Binary Tree Level Order Traversal</a>
+            <a href="/2021/09/01/LeetCode%20234.%20Palindrome%20Linked%20List/" class="post-title-link" itemprop="url">LeetCode 234. Palindrome Linked List</a>
         </h2>
 
         <div class="post-meta">
@@ -215,7 +215,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-07-06 08:00:00" itemprop="dateCreated datePublished" datetime="2021-07-06T08:00:00-04:00">2021-07-06</time>
+              <time title="Created: 2021-09-01 08:00:00" itemprop="dateCreated datePublished" datetime="2021-09-01T08:00:00-04:00">2021-09-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,7 +227,7 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/Tree/" itemprop="url" rel="index"><span itemprop="name">Tree</span></a>
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
                 </span>
             </span>
 
@@ -237,7 +237,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>866</span>
+              <span>811</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -256,134 +256,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>root</code> of a binary tree, return <em>the level order traversal of its nodes’ values</em>. (i.e., from left to right, level by level).</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [3,9,20,null,null,15,7]</span><br><span class="line">Output: [[3],[9,20],[15,7]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1]</span><br><span class="line">Output: [[1]]</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = []</span><br><span class="line">Output: []</span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><ul>
-<li>Solution1 – iterative</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Queue&lt;TreeNode&gt; q = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) q.offer(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">int</span> size = q.size();</span><br><span class="line">            List&lt;Integer&gt; level = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)&#123;</span><br><span class="line">                TreeNode cur = q.poll();</span><br><span class="line">                level.add(cur.val);</span><br><span class="line">                <span class="keyword">if</span>(cur.left != <span class="keyword">null</span>) q.offer(cur.left);</span><br><span class="line">                <span class="keyword">if</span>(cur.right != <span class="keyword">null</span>) q.offer(cur.right);</span><br><span class="line">            &#125;</span><br><span class="line">            res.add(level);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Complexity:</p>
-<p>Time complexity: O(n)</p>
-<p>Space complexity: O(n)</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/07/04/LeetCode%20145.%20Binary%20Tree%20Postorder%20Traversal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="MrainW">
-      <meta itemprop="description" content="MrainW's Home">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MrainW's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/04/LeetCode%20145.%20Binary%20Tree%20Postorder%20Traversal/" class="post-title-link" itemprop="url">LeetCode 145. Binary Tree Postorder Traversal</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-04 08:00:00" itemprop="dateCreated datePublished" datetime="2021-07-04T08:00:00-04:00">2021-07-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/Tree/" itemprop="url" rel="index"><span itemprop="name">Tree</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.1k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>root</code> of a binary tree, return <em>the postorder traversal of its nodes’ values</em>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,null,2,3]</span><br><span class="line">Output: [3,2,1]</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = []</span><br><span class="line">Output: []</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2]</span><br><span class="line">Output: [2,1]</span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><ul>
-<li>Solution1 – iterative</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            root = stack.pop();</span><br><span class="line">            res.add(<span class="number">0</span>, root.val);</span><br><span class="line">            <span class="keyword">if</span>(root.left != <span class="keyword">null</span>) stack.push(root.left);</span><br><span class="line">            <span class="keyword">if</span>(root.right != <span class="keyword">null</span>) stack.push(root.right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Complexity:</p>
-<p>Time complexity: O(n)</p>
-<p>Space complexity: O(n)</p>
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>head</code> of a singly linked list, return <code>true</code> if it is a palindrome.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/palindrome-linked-list/">https://leetcode.com/problems/palindrome-linked-list/</a></p>
 <ul>
-<li>Solution2 – recursive</li>
+<li>Solution1 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        helper(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line"> 		<span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        helper(root.left, res);</span><br><span class="line">        helper(root.right, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head, slow = head;</span><br><span class="line">    <span class="keyword">while</span> (fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fast != <span class="keyword">null</span>) &#123; <span class="comment">// odd nodes: let right half smaller</span></span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    slow = reverse(slow);</span><br><span class="line">    fast = head;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (slow != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (fast.val != slow.val) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        fast = fast.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverse</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode prev = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ListNode next = head.next;</span><br><span class="line">            head.next = prev;</span><br><span class="line">            prev = head;</span><br><span class="line">            head = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Complexity:</p>
 <p>Time complexity: O(n)</p>
-<p>Space complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
 
       
     </div>
@@ -403,7 +285,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/07/03/LeetCode%2094.%20Binary%20Tree%20Inorder%20Traversal/">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/31/LeetCode%201171.%20Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -417,7 +299,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/03/LeetCode%2094.%20Binary%20Tree%20Inorder%20Traversal/" class="post-title-link" itemprop="url">LeetCode 94. Binary Tree Inorder Traversal</a>
+            <a href="/2021/08/31/LeetCode%201171.%20Remove%20Zero%20Sum%20Consecutive%20Nodes%20from%20Linked%20List/" class="post-title-link" itemprop="url">LeetCode 1171. Remove Zero Sum Consecutive Nodes from Linked List</a>
         </h2>
 
         <div class="post-meta">
@@ -427,7 +309,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-07-03 08:00:00" itemprop="dateCreated datePublished" datetime="2021-07-03T08:00:00-04:00">2021-07-03</time>
+              <time title="Created: 2021-08-31 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-31T08:00:00-04:00">2021-08-31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -439,7 +321,7 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/Tree/" itemprop="url" rel="index"><span itemprop="name">Tree</span></a>
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
                 </span>
             </span>
 
@@ -449,7 +331,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1k</span>
+              <span>846</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -468,28 +350,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>root</code> of a binary tree, return <em>the inorder traversal of its nodes’ values</em>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,null,2,3]</span><br><span class="line">Output: [1,3,2]</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = []</span><br><span class="line">Output: []</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1]</span><br><span class="line">Output: [1]</span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><ul>
-<li>Solution1 – iterative</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(root != <span class="keyword">null</span> || !stack.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">while</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">                stack.push(root);</span><br><span class="line">                root = root.left;</span><br><span class="line">            &#125;</span><br><span class="line">            root = stack.pop();</span><br><span class="line">            res.add(root.val);</span><br><span class="line">            root = root.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Complexity:</p>
-<p>Time complexity: O(n)</p>
-<p>Space complexity: O(n)</p>
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>head</code> of a linked list, we repeatedly delete consecutive sequences of nodes that sum to <code>0</code> until there are no such sequences.</p>
+<p>After doing so, return the head of the final linked list. You may return any such answer.</p>
+<p>(Note that in the examples below, all sequences are serializations of <code>ListNode</code> objects.)</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/">https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/</a></p>
 <ul>
-<li>Solution2 – recursive</li>
+<li>Solution1 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        helper(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line"> 		<span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        helper(root.left, res);</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        helper(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeZeroSumSublists</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> preFix = <span class="number">0</span>;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line">        Map&lt;Integer, ListNode&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="number">0</span>, dummy);</span><br><span class="line">        <span class="keyword">for</span>(ListNode i = dummy; i != <span class="keyword">null</span>; i= i.next)&#123;</span><br><span class="line">            preFix += i.val;</span><br><span class="line">            map.put(preFix, i);</span><br><span class="line">        &#125;</span><br><span class="line">        preFix = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(ListNode i = dummy; i != <span class="keyword">null</span>; i = i.next)&#123;</span><br><span class="line">            preFix += i.val;</span><br><span class="line">            i.next = map.get(preFix).next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Complexity:</p>
 <p>Time complexity: O(n)</p>
@@ -513,7 +381,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/07/02/LeetCode%20144.%20Binary%20Tree%20Preorder%20Traversal/">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/30/LeetCode%2019.%20Remove%20Nth%20Node%20From%20End%20of%20List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -527,7 +395,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/02/LeetCode%20144.%20Binary%20Tree%20Preorder%20Traversal/" class="post-title-link" itemprop="url">LeetCode 144. Binary Tree Preorder Traversal</a>
+            <a href="/2021/08/30/LeetCode%2019.%20Remove%20Nth%20Node%20From%20End%20of%20List/" class="post-title-link" itemprop="url">LeetCode 19. Remove Nth Node From End of List</a>
         </h2>
 
         <div class="post-meta">
@@ -537,7 +405,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-07-02 08:00:00" itemprop="dateCreated datePublished" datetime="2021-07-02T08:00:00-04:00">2021-07-02</time>
+              <time title="Created: 2021-08-30 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-30T08:00:00-04:00">2021-08-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -549,7 +417,7 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Leetcode/Tree/" itemprop="url" rel="index"><span itemprop="name">Tree</span></a>
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
                 </span>
             </span>
 
@@ -559,7 +427,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.1k</span>
+              <span>547</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -578,32 +446,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>root</code> of a binary tree, return <em>the preorder traversal of its nodes’ values</em>.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,null,2,3]</span><br><span class="line">Output: [1,2,3]</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = []</span><br><span class="line">Output: []</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1]</span><br><span class="line">Output: [1]</span><br></pre></td></tr></table></figure>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><ul>
-<li>Solution1 – iterative</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>) stack.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            root = stack.pop();</span><br><span class="line">            res.add(root.val);</span><br><span class="line">            <span class="keyword">if</span>(root.right != <span class="keyword">null</span>) stack.push(root.right);</span><br><span class="line">            <span class="keyword">if</span>(root.left != <span class="keyword">null</span>) stack.push(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Complexity:</p>
-<p>Time complexity: O(n)</p>
-<p>Space complexity: O(n)</p>
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>head</code> of a linked list, remove the <code>nth</code> node from the end of the list and return its head.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/">https://leetcode.com/problems/remove-nth-node-from-end-of-list/</a></p>
 <ul>
-<li>Solution2 – recursive</li>
+<li>Solution1 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        helper(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode root, List&lt;Integer&gt; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        res.add(root.val);</span><br><span class="line">        helper(root.left, res);</span><br><span class="line">        helper(root.right, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeNthFromEnd</span><span class="params">(ListNode head, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line">        ListNode first = dummy, second = dummy;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n+<span class="number">1</span>; i++)</span><br><span class="line">            first = first.next;</span><br><span class="line">        <span class="keyword">while</span>(first != <span class="keyword">null</span>)&#123;</span><br><span class="line">            first = first.next;</span><br><span class="line">            second = second.next;</span><br><span class="line">        &#125;</span><br><span class="line">        second.next = second.next.next;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>Complexity:</p>
 <p>Time complexity: O(n)</p>
-<p>Space complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
 
       
     </div>
@@ -623,7 +475,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/01/01/%E8%AE%BA%E5%85%B4%E8%B6%A3/">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/29/LeetCode%2082.%20Remove%20Duplicates%20from%20Sorted%20List%20II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -637,7 +489,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/01/%E8%AE%BA%E5%85%B4%E8%B6%A3/" class="post-title-link" itemprop="url">论兴趣</a>
+            <a href="/2021/08/29/LeetCode%2082.%20Remove%20Duplicates%20from%20Sorted%20List%20II/" class="post-title-link" itemprop="url">LeetCode 82. Remove Duplicates from Sorted List II</a>
         </h2>
 
         <div class="post-meta">
@@ -647,7 +499,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-01-01 22:09:00" itemprop="dateCreated datePublished" datetime="2021-01-01T22:09:00-05:00">2021-01-01</time>
+              <time title="Created: 2021-08-29 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-29T08:00:00-04:00">2021-08-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -655,7 +507,11 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
                 </span>
             </span>
 
@@ -665,97 +521,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>3 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>写下这篇文章是想说说我对专业与兴趣之间的关系的看法。当我们大学选专业的时候，当我们研究生选方向的时候，当我们博士选方向的时候，当我们工作选岗位的时候，都会很疑惑到底哪个方向更适合自己。询问了一堆前辈后，有的告诉你要根据前景选，有的告诉你要根据兴趣选，最后困扰我们的问题就变成了，到底是选一个自己感兴趣的方向还是选一个前景好的方向？这个问题就是本文主要想讨论的一个问题。</p>
-<p>面对一个问题，我们先要来深入了解一下，这个问题的本质是什么。所以，我想先说说我对兴趣的看法。我对兴趣的看法始终都是：<strong>不要把兴趣看得多么崇高，你做的好你就感兴趣，你做的不好你就不感兴趣。</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/01/%E8%AE%BA%E5%85%B4%E8%B6%A3/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2020/08/20/%E5%A4%A7%E8%A7%82%E5%9B%AD3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="MrainW">
-      <meta itemprop="description" content="MrainW's Home">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MrainW's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/20/%E5%A4%A7%E8%A7%82%E5%9B%AD3/" class="post-title-link" itemprop="url">大观园三</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-08-20 01:10:00" itemprop="dateCreated datePublished" datetime="2020-08-20T01:10:00-04:00">2020-08-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E8%AF%B4/" itemprop="url" rel="index"><span itemprop="name">小说</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.2k</span>
+              <span>693</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -774,23 +540,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>五年前。</p>
-<p>小楼无聊的在床上刷着手机，不时发出阵阵笑声。</p>
-<p>“大威天龙，世尊地藏，般若诸佛，般若巴嘛空。“</p>
-<p>“三年之期已到！恭迎龙王√“</p>
-<p>“生不出人，我很抱歉“</p>
-<p>“人在美国，刚下飞机”</p>
-<p>“。。。。。。”</p>
-<p>“嗡嗡嗡”</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/20/%E5%A4%A7%E8%A7%82%E5%9B%AD3/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>head</code> of a sorted linked list, <em>delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list</em>. Return <em>the linked list <strong>sorted</strong> as well</em>.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/">https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/</a></p>
+<ul>
+<li>Solution1 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line">        ListNode pre = dummy, cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span> &amp;&amp; cur.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur.val == cur.next.val)&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = cur.val;</span><br><span class="line">                <span class="keyword">while</span>(cur != <span class="keyword">null</span> &amp;&amp; temp == cur.val) cur = cur.next;</span><br><span class="line">                pre.next = cur;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                pre = pre.next;</span><br><span class="line">                cur = cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Complexity:</p>
+<p>Time complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
+
       
     </div>
 
@@ -809,7 +569,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2020/05/18/%E5%A4%A7%E8%A7%82%E5%9B%AD2/">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/28/LeetCode%2082.%20Remove%20Duplicates%20from%20Sorted%20List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -823,7 +583,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/18/%E5%A4%A7%E8%A7%82%E5%9B%AD2/" class="post-title-link" itemprop="url">大观园二</a>
+            <a href="/2021/08/28/LeetCode%2082.%20Remove%20Duplicates%20from%20Sorted%20List/" class="post-title-link" itemprop="url">LeetCode 83. Remove Duplicates from Sorted List</a>
         </h2>
 
         <div class="post-meta">
@@ -833,7 +593,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-05-18 19:26:00" itemprop="dateCreated datePublished" datetime="2020-05-18T19:26:00-04:00">2020-05-18</time>
+              <time title="Created: 2021-08-28 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-28T08:00:00-04:00">2021-08-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -841,7 +601,11 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E8%AF%B4/" itemprop="url" rel="index"><span itemprop="name">小说</span></a>
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
                 </span>
             </span>
 
@@ -851,7 +615,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.6k</span>
+              <span>488</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -870,17 +634,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>轰隆隆, 飞机终于起飞了。下面的房屋越来越远，渐渐消失在视野中。</p>
-<p>大痣一上飞机就闭上了眼睛，身体似乎还有些发抖。小楼在旁边看着大痣，嘴角露出了一丝坏笑。大痣虽然什么都看得都比小楼透彻，但就是害怕坐飞机。偏偏大痣每次都嘴硬的说自己完全不怕，只是感觉飞机的冷气开的太足了，自己是被冻的发抖。每每看到大痣这个样子，小楼总会很开心，虽然他什么都不如大痣，但至少在这一点他觉得自己终于胜过大痣了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/18/%E5%A4%A7%E8%A7%82%E5%9B%AD2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>head</code> of a sorted linked list, <em>delete all duplicates such that each element appears only once</em>. Return <em>the linked list <strong>sorted</strong> as well</em>.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/">https://leetcode.com/problems/remove-duplicates-from-sorted-list/</a></p>
+<ul>
+<li>Solution1 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(cur.next != <span class="keyword">null</span> &amp;&amp; cur.val == cur.next.val)</span><br><span class="line">                cur.next = cur.next.next;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Complexity:</p>
+<p>Time complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
+
       
     </div>
 
@@ -899,7 +663,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2020/05/04/%E5%A4%A7%E8%A7%82%E5%9B%AD1/">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/28/LeetCode%2083.%20Remove%20Duplicates%20from%20Sorted%20List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -913,7 +677,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/04/%E5%A4%A7%E8%A7%82%E5%9B%AD1/" class="post-title-link" itemprop="url">大观园一</a>
+            <a href="/2021/08/28/LeetCode%2083.%20Remove%20Duplicates%20from%20Sorted%20List/" class="post-title-link" itemprop="url">LeetCode 83. Remove Duplicates from Sorted List</a>
         </h2>
 
         <div class="post-meta">
@@ -923,7 +687,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-05-04 23:49:00" itemprop="dateCreated datePublished" datetime="2020-05-04T23:49:00-04:00">2020-05-04</time>
+              <time title="Created: 2021-08-28 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-28T08:00:00-04:00">2021-08-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -931,7 +695,11 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E8%AF%B4/" itemprop="url" rel="index"><span itemprop="name">小说</span></a>
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
                 </span>
             </span>
 
@@ -941,7 +709,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.3k</span>
+              <span>488</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -960,18 +728,398 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>“大痣，大痣，愣在那干什么呢，快走了，要赶不上回家的飞机了！”</p>
-<p>恍惚中被惊醒的的大痣，快步追了上去。其实大痣本名并不叫大痣，他名叫吴用。只是大痣眼角有一颗痣，大家便大痣大痣的叫了下来。</p>
-<p>说起这大痣，他小时候却有另一个外号，没错，就是智多星吴用。那时的他勤奋好奇，博古通今，倒也真对得住这称呼。在他小学时，有次年级大会，有位学校重金聘请过来的国学大师，在台上“指点江山，激扬文字”，他实在听不下去了，直接走上台去，在全年级的同学的一阵惊呼中，指出了他刚才讲的19个错误。全场一片哗然，然后他就像个没事人似的默默的走下了台，只留下身后阵阵的掌声。虽然那件事后，他就被叫去谈话了，但大家都知道他不会变的，吴用就是吴用，要是这么通人情，懂变通，也不会只有小楼一个朋友了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/04/%E5%A4%A7%E8%A7%82%E5%9B%AD1/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>head</code> of a sorted linked list, <em>delete all duplicates such that each element appears only once</em>. Return <em>the linked list <strong>sorted</strong> as well</em>.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/">https://leetcode.com/problems/remove-duplicates-from-sorted-list/</a></p>
+<ul>
+<li>Solution1 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">deleteDuplicates</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(cur.next != <span class="keyword">null</span> &amp;&amp; cur.val == cur.next.val)</span><br><span class="line">                cur.next = cur.next.next;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Complexity:</p>
+<p>Time complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/27/LeetCode%20203.%20Remove%20Linked%20List%20Elements/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="MrainW">
+      <meta itemprop="description" content="MrainW's Home">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrainW's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/27/LeetCode%20203.%20Remove%20Linked%20List%20Elements/" class="post-title-link" itemprop="url">LeetCode 203. Remove Linked List Elements</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-27 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-27T08:00:00-04:00">2021-08-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>514</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>head</code> of a linked list and an integer <code>val</code>, remove all the nodes of the linked list that has <code>Node.val == val</code>, and return <em>the new head</em>.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-linked-list-elements/">https://leetcode.com/problems/remove-linked-list-elements/</a></p>
+<ul>
+<li>Solution1 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">removeElements</span><span class="params">(ListNode head, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line">        ListNode cur = dummy;</span><br><span class="line">        <span class="keyword">while</span>(cur.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cur.next.val == val) cur.next = cur.next.next;</span><br><span class="line">            <span class="keyword">else</span> cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Complexity:</p>
+<p>Time complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/26/LeetCode%20287.%20Find%20the%20Duplicate%20Number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="MrainW">
+      <meta itemprop="description" content="MrainW's Home">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrainW's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/26/LeetCode%20287.%20Find%20the%20Duplicate%20Number/" class="post-title-link" itemprop="url">LeetCode 287. Find the Duplicate Number</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-26 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-26T08:00:00-04:00">2021-08-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>762</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given an array of integers <code>nums</code> containing <code>n + 1</code> integers where each integer is in the range <code>[1, n]</code> inclusive.</p>
+<p>There is only <strong>one repeated number</strong> in <code>nums</code>, return <em>this repeated number</em>.</p>
+<p>You must solve the problem <strong>without</strong> modifying the array <code>nums</code> and uses only constant extra space.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-the-duplicate-number/">https://leetcode.com/problems/find-the-duplicate-number/</a></p>
+<ul>
+<li>Solution1 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Set&lt;Integer&gt; seen = new HashSet&lt;&gt;();</span></span><br><span class="line">        <span class="comment">//for(int num : nums)</span></span><br><span class="line">        <span class="comment">//    if(!seen.add(num)) return num;</span></span><br><span class="line">        <span class="comment">//return -1;</span></span><br><span class="line">        <span class="keyword">int</span> slow = nums[<span class="number">0</span>], fast = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            slow = nums[slow];</span><br><span class="line">            fast = nums[nums[fast]];</span><br><span class="line">            <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">                fast = nums[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">while</span>(fast != slow)&#123;</span><br><span class="line">                    slow = nums[slow];</span><br><span class="line">                    fast = nums[fast];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> slow;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Complexity:</p>
+<p>Time complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/25/LeetCode%20142.%20Linked%20List%20Cycle%20II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="MrainW">
+      <meta itemprop="description" content="MrainW's Home">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrainW's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/25/LeetCode%20142.%20Linked%20List%20Cycle%20II/" class="post-title-link" itemprop="url">LeetCode 142. Linked List Cycle II</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-25 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-25T08:00:00-04:00">2021-08-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>818</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given the <code>head</code> of a linked list, return <em>the node where the cycle begins. If there is no cycle, return</em> <code>null</code>.</p>
+<p>There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the <code>next</code> pointer. Internally, <code>pos</code> is used to denote the index of the node that tail’s <code>next</code> pointer is connected to (<strong>0-indexed</strong>). It is <code>-1</code> if there is no cycle. <strong>Note that</strong> <code>pos</code> <strong>is not passed as a parameter</strong>.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/linked-list-cycle-ii/">https://leetcode.com/problems/linked-list-cycle-ii/</a></p>
+<ul>
+<li>Solution1 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            <span class="keyword">if</span>(fast == slow)&#123;</span><br><span class="line">                fast = head;</span><br><span class="line">                <span class="keyword">while</span>(slow != fast)&#123;</span><br><span class="line">                    fast = fast.next;</span><br><span class="line">                    slow = slow.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> slow;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Complexity:</p>
+<p>Time complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://mrainw.github.io/2021/08/24/LeetCode%20141.%20Linked%20List%20Cycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="MrainW">
+      <meta itemprop="description" content="MrainW's Home">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrainW's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/24/LeetCode%20141.%20Linked%20List%20Cycle/" class="post-title-link" itemprop="url">LeetCode 141. Linked List Cycle</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-24 08:00:00" itemprop="dateCreated datePublished" datetime="2021-08-24T08:00:00-04:00">2021-08-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>718</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given <code>head</code>, the head of a linked list, determine if the linked list has a cycle in it.</p>
+<p>There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the <code>next</code> pointer. Internally, <code>pos</code> is used to denote the index of the node that tail’s <code>next</code> pointer is connected to. <strong>Note that <code>pos</code> is not passed as a parameter</strong>.</p>
+<p>Return <code>true</code> <em>if there is a cycle in the linked list</em>. Otherwise, return <code>false</code>.</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/linked-list-cycle/">https://leetcode.com/problems/linked-list-cycle/</a></p>
+<ul>
+<li>Solution1 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head, fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span>(slow == fast) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Complexity:</p>
+<p>Time complexity: O(n)</p>
+<p>Space complexity: O(1)</p>
+
       
     </div>
 
@@ -989,7 +1137,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1057,20 +1205,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">83</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1114,12 +1262,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">30k</span>
+    <span title="Symbols count total">76k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">28 mins.</span>
+    <span title="Reading time total">1:09</span>
 </div>
 
         
