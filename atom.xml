@@ -6,7 +6,7 @@
   <link href="https://mrainw.github.io/atom.xml" rel="self"/>
   
   <link href="https://mrainw.github.io/"/>
-  <updated>2022-04-05T02:37:44.359Z</updated>
+  <updated>2022-04-05T02:43:50.316Z</updated>
   <id>https://mrainw.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac kill process on certain port</title>
+    <link href="https://mrainw.github.io/2022/04/01/Mac%20kill%20the%20process%20on%20certain%20port/"/>
+    <id>https://mrainw.github.io/2022/04/01/Mac%20kill%20the%20process%20on%20certain%20port/</id>
+    <published>2022-04-01T12:00:00.000Z</published>
+    <updated>2022-04-05T02:43:50.316Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Look-through-certain-port"><a href="#Look-through-certain-port" class="headerlink" title="Look through certain port"></a>Look through certain port</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lsof -i :port</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">lsof -i tcp:port</span><br><span class="line"></span><br><span class="line">//replace the port with the number of port(eg:3000)</span><br></pre></td></tr></table></figure><h2 id="Kill-the-pid"><a href="#Kill-the-pid" class="headerlink" title="Kill the pid"></a>Kill the pid</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kill -9 PID</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//replace the PID with the number of PID(get the value from last step)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Look-through-certain-port&quot;&gt;&lt;a href=&quot;#Look-through-certain-port&quot; class=&quot;headerlink&quot; title=&quot;Look through certain port&quot;&gt;&lt;/a&gt;Look throug</summary>
+      
+    
+    
+    
+    <category term="Mac" scheme="https://mrainw.github.io/categories/Mac/"/>
+    
+    <category term="Skills" scheme="https://mrainw.github.io/categories/Mac/Skills/"/>
+    
+    
+    <category term="skills" scheme="https://mrainw.github.io/tags/skills/"/>
+    
+  </entry>
   
   <entry>
     <title>Transfer Hexo blog to Mac</title>
@@ -263,18 +289,18 @@
   </entry>
   
   <entry>
-    <title>LeetCode 503. Next Greater Element II</title>
-    <link href="https://mrainw.github.io/2021/10/14/LeetCode%20503.%20Next%20Greater%20Element%20II/"/>
-    <id>https://mrainw.github.io/2021/10/14/LeetCode%20503.%20Next%20Greater%20Element%20II/</id>
+    <title>LeetCode 496. Next Greater Element I</title>
+    <link href="https://mrainw.github.io/2021/10/14/LeetCode%20496.%20Next%20Greater%20Element%20I/"/>
+    <id>https://mrainw.github.io/2021/10/14/LeetCode%20496.%20Next%20Greater%20Element%20I/</id>
     <published>2021-10-14T12:00:00.000Z</published>
-    <updated>2021-10-23T01:33:10.000Z</updated>
+    <updated>2021-10-23T01:31:20.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given a circular integer array <code>nums</code> (i.e., the next element of <code>nums[nums.length - 1]</code> is <code>nums[0]</code>), return <em>the <strong>next greater number</strong> for every element in</em> <code>nums</code>.</p><p>The <strong>next greater number</strong> of a number <code>x</code> is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn’t exist, return <code>-1</code> for this number.</p><p><a href="https://leetcode.com/problems/next-greater-element-ii/">https://leetcode.com/problems/next-greater-element-ii/</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElements(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length, res[] = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> * n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; nums[i % n] &gt;= stack.peek()) stack.pop();</span><br><span class="line">            res[i % n] = stack.isEmpty() ? -<span class="number">1</span> : stack.peek();</span><br><span class="line">            stack.push(nums[i % n]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Time complexity: O(n)</p><p>Space complexity: O(n)</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>The <strong>next greater element</strong> of some element <code>x</code> in an array is the <strong>first greater</strong> element that is <strong>to the right</strong> of <code>x</code> in the same array.</p><p>You are given two <strong>distinct 0-indexed</strong> integer arrays <code>nums1</code> and <code>nums2</code>, where <code>nums1</code> is a subset of <code>nums2</code>.</p><p>For each <code>0 &lt;= i &lt; nums1.length</code>, find the index <code>j</code> such that <code>nums1[i] == nums2[j]</code> and determine the <strong>next greater element</strong> of <code>nums2[j]</code> in <code>nums2</code>. If there is no next greater element, then the answer for this query is <code>-1</code>.</p><p>Return <em>an array</em> <code>ans</code> <em>of length</em> <code>nums1.length</code> <em>such that</em> <code>ans[i]</code> <em>is the <strong>next greater element</strong> as described above.</em></p><p><a href="https://leetcode.com/problems/next-greater-element-i/">https://leetcode.com/problems/next-greater-element-i/</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElement(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums2.length -<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; nums2[i] &gt;= stack.peek()) stack.pop();</span><br><span class="line">            map.put(nums2[i], stack.isEmpty() ? -<span class="number">1</span> : stack.peek());</span><br><span class="line">            stack.push(nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[nums1.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums1.length; i++) res[i] = map.get(nums1[i]);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Time complexity: O(n)</p><p>Space complexity: O(n)</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;Question&quot;&gt;&lt;a href=&quot;#Question&quot; class=&quot;headerlink&quot; title=&quot;Question&quot;&gt;&lt;/a&gt;Question&lt;/h2&gt;&lt;p&gt;Given a circular integer array &lt;code&gt;nums&lt;/cod</summary>
+    <summary type="html">&lt;h2 id=&quot;Question&quot;&gt;&lt;a href=&quot;#Question&quot; class=&quot;headerlink&quot; title=&quot;Question&quot;&gt;&lt;/a&gt;Question&lt;/h2&gt;&lt;p&gt;The &lt;strong&gt;next greater element&lt;/strong&gt; of s</summary>
       
     
     
@@ -289,18 +315,18 @@
   </entry>
   
   <entry>
-    <title>LeetCode 496. Next Greater Element I</title>
-    <link href="https://mrainw.github.io/2021/10/14/LeetCode%20496.%20Next%20Greater%20Element%20I/"/>
-    <id>https://mrainw.github.io/2021/10/14/LeetCode%20496.%20Next%20Greater%20Element%20I/</id>
+    <title>LeetCode 503. Next Greater Element II</title>
+    <link href="https://mrainw.github.io/2021/10/14/LeetCode%20503.%20Next%20Greater%20Element%20II/"/>
+    <id>https://mrainw.github.io/2021/10/14/LeetCode%20503.%20Next%20Greater%20Element%20II/</id>
     <published>2021-10-14T12:00:00.000Z</published>
-    <updated>2021-10-23T01:31:20.000Z</updated>
+    <updated>2021-10-23T01:33:10.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>The <strong>next greater element</strong> of some element <code>x</code> in an array is the <strong>first greater</strong> element that is <strong>to the right</strong> of <code>x</code> in the same array.</p><p>You are given two <strong>distinct 0-indexed</strong> integer arrays <code>nums1</code> and <code>nums2</code>, where <code>nums1</code> is a subset of <code>nums2</code>.</p><p>For each <code>0 &lt;= i &lt; nums1.length</code>, find the index <code>j</code> such that <code>nums1[i] == nums2[j]</code> and determine the <strong>next greater element</strong> of <code>nums2[j]</code> in <code>nums2</code>. If there is no next greater element, then the answer for this query is <code>-1</code>.</p><p>Return <em>an array</em> <code>ans</code> <em>of length</em> <code>nums1.length</code> <em>such that</em> <code>ans[i]</code> <em>is the <strong>next greater element</strong> as described above.</em></p><p><a href="https://leetcode.com/problems/next-greater-element-i/">https://leetcode.com/problems/next-greater-element-i/</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElement(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums2.length -<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; nums2[i] &gt;= stack.peek()) stack.pop();</span><br><span class="line">            map.put(nums2[i], stack.isEmpty() ? -<span class="number">1</span> : stack.peek());</span><br><span class="line">            stack.push(nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[nums1.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums1.length; i++) res[i] = map.get(nums1[i]);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Time complexity: O(n)</p><p>Space complexity: O(n)</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given a circular integer array <code>nums</code> (i.e., the next element of <code>nums[nums.length - 1]</code> is <code>nums[0]</code>), return <em>the <strong>next greater number</strong> for every element in</em> <code>nums</code>.</p><p>The <strong>next greater number</strong> of a number <code>x</code> is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn’t exist, return <code>-1</code> for this number.</p><p><a href="https://leetcode.com/problems/next-greater-element-ii/">https://leetcode.com/problems/next-greater-element-ii/</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] nextGreaterElements(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length, res[] = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span> * n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; nums[i % n] &gt;= stack.peek()) stack.pop();</span><br><span class="line">            res[i % n] = stack.isEmpty() ? -<span class="number">1</span> : stack.peek();</span><br><span class="line">            stack.push(nums[i % n]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Time complexity: O(n)</p><p>Space complexity: O(n)</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;Question&quot;&gt;&lt;a href=&quot;#Question&quot; class=&quot;headerlink&quot; title=&quot;Question&quot;&gt;&lt;/a&gt;Question&lt;/h2&gt;&lt;p&gt;The &lt;strong&gt;next greater element&lt;/strong&gt; of s</summary>
+    <summary type="html">&lt;h2 id=&quot;Question&quot;&gt;&lt;a href=&quot;#Question&quot; class=&quot;headerlink&quot; title=&quot;Question&quot;&gt;&lt;/a&gt;Question&lt;/h2&gt;&lt;p&gt;Given a circular integer array &lt;code&gt;nums&lt;/cod</summary>
       
     
     
@@ -529,32 +555,6 @@
     <category term="divide and conquer" scheme="https://mrainw.github.io/tags/divide-and-conquer/"/>
     
     <category term="merge sort" scheme="https://mrainw.github.io/tags/merge-sort/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 50. Pow(x, n)</title>
-    <link href="https://mrainw.github.io/2021/10/07/LeetCode%2050.%20Pow(x,%20n)/"/>
-    <id>https://mrainw.github.io/2021/10/07/LeetCode%2050.%20Pow(x,%20n)/</id>
-    <published>2021-10-07T12:00:00.000Z</published>
-    <updated>2021-10-23T00:59:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Implement <a href="http://www.cplusplus.com/reference/valarray/pow/">pow(x, n)</a>, which calculates <code>x</code> raised to the power <code>n</code> (i.e., <code>xn</code>).</p><ul><li><a href="https://leetcode.com/problems/powx-n/Solution1">https://leetcode.com/problems/powx-n/Solution1</a> </li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">//time complexity logn</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ( x == <span class="number">0</span> || x == <span class="number">1</span>) <span class="keyword">return</span> x;</span><br><span class="line">        <span class="keyword">if</span> (n &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span> / pow(x, -n);</span><br><span class="line">        <span class="keyword">return</span> pow(x, n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">double</span> <span class="title">pow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">double</span> y = pow(x, n / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) <span class="keyword">return</span> y * y;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> y * y * x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Complexity:</p><p>Time complexity: O( logn)</p><p>Space complexity: O(logn)</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;Question&quot;&gt;&lt;a href=&quot;#Question&quot; class=&quot;headerlink&quot; title=&quot;Question&quot;&gt;&lt;/a&gt;Question&lt;/h2&gt;&lt;p&gt;Implement &lt;a href=&quot;http://www.cplusplus.com/re</summary>
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://mrainw.github.io/categories/Leetcode/"/>
-    
-    <category term="Divide and conquer" scheme="https://mrainw.github.io/categories/Leetcode/Divide-and-conquer/"/>
-    
-    
-    <category term="divide and conquer" scheme="https://mrainw.github.io/tags/divide-and-conquer/"/>
     
   </entry>
   
