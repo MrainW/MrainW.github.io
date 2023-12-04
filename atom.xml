@@ -393,35 +393,6 @@
   </entry>
   
   <entry>
-    <title>LeetCode 225. Implement Stack using Queues</title>
-    <link href="https://mrainw.github.io/2021/10/11/LeetCode%20225.%20Implement%20Stack%20using%20Queues/"/>
-    <id>https://mrainw.github.io/2021/10/11/LeetCode%20225.%20Implement%20Stack%20using%20Queues/</id>
-    <published>2021-10-11T12:00:00.000Z</published>
-    <updated>2021-10-23T01:18:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul><li><p>Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (<code>push</code>, <code>top</code>, <code>pop</code>, and <code>empty</code>).</p><p>Implement the <code>MyStack</code> class:</p><ul><li><code>void push(int x)</code> Pushes element x to the top of the stack.</li><li><code>int pop()</code> Removes the element on the top of the stack and returns it.</li><li><code>int top()</code> Returns the element on the top of the stack.</li><li><code>boolean empty()</code> Returns <code>true</code> if the stack is empty, <code>false</code> otherwise.</li></ul></li></ul><p><a href="https://leetcode.com/problems/implement-stack-using-queues/">https://leetcode.com/problems/implement-stack-using-queues/</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyStack</span> </span>&#123;</span><br><span class="line">    <span class="comment">//push O(n)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    Queue&lt;Integer&gt; q1 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    Queue&lt;Integer&gt; q2 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(q1.isEmpty()) q1.offer(x);</span><br><span class="line">        <span class="keyword">while</span>(!q2.isEmpty()) q1.offer(q2.poll());</span><br><span class="line">        <span class="keyword">while</span>(!q1.isEmpty()) q2.offer(q1.poll());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> q2.poll();&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> q2.peek();&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> q1.isEmpty() &amp;&amp; q2.isEmpty();&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyStack obj = new MyStack();</span></span><br><span class="line"><span class="comment"> * obj.push(x);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * boolean param_4 = obj.empty();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure><p>Complexity:</p><p>Time complexity:</p><p>push: O(n)</p><p>pop/top/empty:  O(1)</p><p>Space complexity: O(n)</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;Question&quot;&gt;&lt;a href=&quot;#Question&quot; class=&quot;headerlink&quot; title=&quot;Question&quot;&gt;&lt;/a&gt;Question&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Implement a last-in-first-out (LIFO) </summary>
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://mrainw.github.io/categories/Leetcode/"/>
-    
-    <category term="Queue" scheme="https://mrainw.github.io/categories/Leetcode/Queue/"/>
-    
-    
-    <category term="stack" scheme="https://mrainw.github.io/tags/stack/"/>
-    
-    <category term="Queue" scheme="https://mrainw.github.io/tags/Queue/"/>
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode 232. Implement Queue using Stacks</title>
     <link href="https://mrainw.github.io/2021/10/11/LeetCode%20232.%20Implement%20Queue%20using%20Stacks/"/>
     <id>https://mrainw.github.io/2021/10/11/LeetCode%20232.%20Implement%20Queue%20using%20Stacks/</id>
@@ -442,6 +413,35 @@
     <category term="Leetcode" scheme="https://mrainw.github.io/categories/Leetcode/"/>
     
     <category term="Stack" scheme="https://mrainw.github.io/categories/Leetcode/Stack/"/>
+    
+    
+    <category term="stack" scheme="https://mrainw.github.io/tags/stack/"/>
+    
+    <category term="Queue" scheme="https://mrainw.github.io/tags/Queue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 225. Implement Stack using Queues</title>
+    <link href="https://mrainw.github.io/2021/10/11/LeetCode%20225.%20Implement%20Stack%20using%20Queues/"/>
+    <id>https://mrainw.github.io/2021/10/11/LeetCode%20225.%20Implement%20Stack%20using%20Queues/</id>
+    <published>2021-10-11T12:00:00.000Z</published>
+    <updated>2021-10-23T01:18:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><ul><li><p>Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (<code>push</code>, <code>top</code>, <code>pop</code>, and <code>empty</code>).</p><p>Implement the <code>MyStack</code> class:</p><ul><li><code>void push(int x)</code> Pushes element x to the top of the stack.</li><li><code>int pop()</code> Removes the element on the top of the stack and returns it.</li><li><code>int top()</code> Returns the element on the top of the stack.</li><li><code>boolean empty()</code> Returns <code>true</code> if the stack is empty, <code>false</code> otherwise.</li></ul></li></ul><p><a href="https://leetcode.com/problems/implement-stack-using-queues/">https://leetcode.com/problems/implement-stack-using-queues/</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyStack</span> </span>&#123;</span><br><span class="line">    <span class="comment">//push O(n)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    Queue&lt;Integer&gt; q1 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    Queue&lt;Integer&gt; q2 = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(q1.isEmpty()) q1.offer(x);</span><br><span class="line">        <span class="keyword">while</span>(!q2.isEmpty()) q1.offer(q2.poll());</span><br><span class="line">        <span class="keyword">while</span>(!q1.isEmpty()) q2.offer(q1.poll());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> q2.poll();&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> q2.peek();&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> q1.isEmpty() &amp;&amp; q2.isEmpty();&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyStack obj = new MyStack();</span></span><br><span class="line"><span class="comment"> * obj.push(x);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * boolean param_4 = obj.empty();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure><p>Complexity:</p><p>Time complexity:</p><p>push: O(n)</p><p>pop/top/empty:  O(1)</p><p>Space complexity: O(n)</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Question&quot;&gt;&lt;a href=&quot;#Question&quot; class=&quot;headerlink&quot; title=&quot;Question&quot;&gt;&lt;/a&gt;Question&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Implement a last-in-first-out (LIFO) </summary>
+      
+    
+    
+    
+    <category term="Leetcode" scheme="https://mrainw.github.io/categories/Leetcode/"/>
+    
+    <category term="Queue" scheme="https://mrainw.github.io/categories/Leetcode/Queue/"/>
     
     
     <category term="stack" scheme="https://mrainw.github.io/tags/stack/"/>
